@@ -2,7 +2,7 @@
 
 function convertRPStoMod3(sel) {
   let mod3num;
-  sel = sel.toLowerCase();
+  //   sel = sel.toLowerCase();
   if (sel == "rock") {
     mod3num = 0;
   } else if (sel == "paper") {
@@ -21,6 +21,8 @@ function playSingleRound(pSel, cSel) {
   let result;
   let result_string;
   let compare_string;
+  pSel = pSel.toLowerCase();
+  cSel = cSel.toLowerCase();
   pMod3 = convertRPStoMod3(pSel);
   cMod3 = convertRPStoMod3(cSel);
 
@@ -38,7 +40,15 @@ function playSingleRound(pSel, cSel) {
     compare_string = "beats ";
   }
   console.log(
-    "You " + result_string + "! " + pSel + " " + compare_string + cSel + "."
+    "You " +
+      result_string +
+      "! " +
+      pSel[0].toUpperCase() +
+      pSel.slice(1) +
+      " " +
+      compare_string +
+      cSel +
+      "."
   );
   return result;
 }
