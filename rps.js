@@ -1,8 +1,25 @@
 "use strict";
 
+function getComputerChoice() {
+  let compChoice;
+  // generate a random integer 0,1,2 for the computer
+  const compInt = Math.floor(Math.random() * 3);
+  // depending on the integer, assign an appropriate string
+  if (compInt == 0) {
+    compChoice = "rock";
+  } else if (compInt == 1) {
+    compChoice = "paper";
+  } else if (compInt == 2) {
+    compChoice = "scissors";
+  } else {
+    console.log("ERROR: unexpected value in getComputerChoice()");
+  }
+  return compChoice;
+}
+
 function convertRPStoMod3(sel) {
   let mod3num;
-  //   sel = sel.toLowerCase();
+  sel = sel.toLowerCase();
   if (sel == "rock") {
     mod3num = 0;
   } else if (sel == "paper") {
