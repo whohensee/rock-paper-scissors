@@ -15,3 +15,16 @@ fn playSingleRound(pSel, cSel)
     else
         result = win
     return result
+
+
+For Problem 6: Write a function game() that plays a 5 round game
+fn game()
+    create a score counting variable
+    create a total games played variable
+    loop 
+        prompt the user for a selection
+        play a round
+        update the score variable
+        update the games played variable
+        report the score
+    report the final score and winner
