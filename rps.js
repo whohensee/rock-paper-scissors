@@ -69,3 +69,34 @@ function playSingleRound(pSel, cSel) {
   );
   return result;
 }
+
+function game(num_games) {
+  let player_wins = 0;
+  let computer_wins = 0;
+  let games_played = 0;
+  let player_choice;
+  let outcome;
+  while (games_played < num_games) {
+    player_choice = prompt("Rock, paper, or scissors?", "rock");
+    outcome = playSingleRound(player_choice, getComputerChoice());
+    // update the score
+    if (outcome == 0) {
+      computer_wins++;
+    } else if (outcome == 1) {
+      player_wins++;
+    }
+    // update and progress loop
+    games_played++;
+  }
+  console.log(
+    "FINAL SCORE:\n" +
+      "Player wins: " +
+      player_wins +
+      "\n" +
+      "Computer wins: " +
+      computer_wins +
+      "\n" +
+      "Ties: " +
+      (games_played - player_wins - computer_wins)
+  );
+}
