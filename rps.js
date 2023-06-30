@@ -1,5 +1,8 @@
 "use strict";
 
+const lastRound = document.querySelector("#last-round");
+const resultBox = document.querySelector("#result-box");
+
 function getComputerChoice() {
   let compChoice;
   // generate a random integer 0,1,2 for the computer
@@ -38,6 +41,7 @@ function playSingleRound(pSel, cSel) {
   let result;
   let result_string;
   let compare_string;
+  let return_string_for_dom;
   pSel = pSel.toLowerCase();
   cSel = cSel.toLowerCase();
   pMod3 = convertRPStoMod3(pSel);
@@ -56,17 +60,20 @@ function playSingleRound(pSel, cSel) {
     result_string = "win";
     compare_string = "beats ";
   }
-  console.log(
+  return_string_for_dom =
     "You " +
-      result_string +
-      "! " +
-      pSel[0].toUpperCase() +
-      pSel.slice(1) +
-      " " +
-      compare_string +
-      cSel +
-      "."
-  );
+    result_string +
+    "! " +
+    pSel[0].toUpperCase() +
+    pSel.slice(1) +
+    " " +
+    compare_string +
+    cSel +
+    ".";
+
+  // console.log(return_string_for_dom);
+  lastRound.textContent = return_string_for_dom;
+
   return result;
 }
 
@@ -76,6 +83,7 @@ function game(num_games) {
   let games_played = 0;
   let player_choice;
   let outcome;
+  let return_string_for_dom;
   while (games_played < num_games) {
     player_choice = prompt("Rock, paper, or scissors?", "rock");
     outcome = playSingleRound(player_choice, getComputerChoice());
@@ -88,17 +96,18 @@ function game(num_games) {
     // update and progress loop
     games_played++;
   }
-  console.log(
+  return_string_for_dom =
     "FINAL SCORE:\n" +
-      "Player wins: " +
-      player_wins +
-      "\n" +
-      "Computer wins: " +
-      computer_wins +
-      "\n" +
-      "Ties: " +
-      (games_played - player_wins - computer_wins)
-  );
+    "Player wins: " +
+    player_wins +
+    "\n" +
+    "Computer wins: " +
+    computer_wins +
+    "\n" +
+    "Ties: " +
+    (games_played - player_wins - computer_wins);
+
+  resultBox.textContent = return_string_for_dom;
 }
 
 const rpsButtons = document.querySelectorAll(".rps-button");
