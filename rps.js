@@ -2,6 +2,9 @@
 
 const lastRound = document.querySelector("#last-round");
 const resultBox = document.querySelector("#result-box");
+let ties = 0;
+let wins = 0;
+let losses = 0;
 
 function getComputerChoice() {
   let compChoice;
@@ -51,14 +54,17 @@ function playSingleRound(pSel, cSel) {
     result = 2; // tie
     result_string = "tie";
     compare_string = "ties with ";
+    ties++;
   } else if ((pMod3 + 1) % 3 == cMod3) {
     result = 0; // lose
     result_string = "lose";
     compare_string = "loses to ";
+    losses++;
   } else {
     result = 1; // win
     result_string = "win";
     compare_string = "beats ";
+    wins++;
   }
   return_string_for_dom =
     "You " +
@@ -73,8 +79,15 @@ function playSingleRound(pSel, cSel) {
 
   // console.log(return_string_for_dom);
   lastRound.textContent = return_string_for_dom;
+  updateDOMElements();
 
   return result;
+}
+
+function updateDOMElements() {
+  const resultBoxString =
+    "WINS: " + wins + " LOSSES: " + losses + " TIES: " + ties;
+  resultBox.textContent = resultBoxString;
 }
 
 function game(num_games) {
@@ -114,5 +127,6 @@ const rpsButtons = document.querySelectorAll(".rps-button");
 rpsButtons.forEach((button) => button.addEventListener("click", doThing));
 
 function doThing() {
-  console.log(this);
+  console.log(this.getAttribute("data-choice"));
+  playSingleRound(`${this.getAttribute("data-choice")}`, getComputerChoice());
 }
