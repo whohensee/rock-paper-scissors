@@ -102,7 +102,7 @@ function game(num_games) {
 }
 
 const rpsButtons = document.querySelectorAll(".rps-button");
-rpsButtons.forEach(button => button.addEventListener("click", doThing))
+rpsButtons.forEach((button) => button.addEventListener("click", doThing));
 
 function doThing() {
   console.log(this);
