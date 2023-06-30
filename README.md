@@ -36,3 +36,9 @@ New Pseudocode
 On launching the page, we want to display the 3 buttons which will show your
 options in RPS. We want a box showing the total wins, losses, and ties, and we
 also want an area showing the result of the immediate last match.
+
+On button press:
+    play one round
+    display a last-round result eg "You lose, Rock beats Scissors"
+    Update wins, losses, ties.
+    Update result-box
