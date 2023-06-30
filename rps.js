@@ -100,3 +100,10 @@ function game(num_games) {
       (games_played - player_wins - computer_wins)
   );
 }
+
+const rpsButtons = document.querySelectorAll(".rps-button");
+rpsButtons.forEach(button => button.addEventListener("click", doThing))
+
+function doThing() {
+  console.log(this);
+}

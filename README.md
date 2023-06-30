@@ -28,3 +28,6 @@ fn game()
         update the games played variable
         report the score
     report the final score and winner
+
+######## WORKING ON THE UI ########
+3 buttons, one for each choice, with event listeners
